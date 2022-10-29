@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {getPropsSorted, getPropsGrouped} from './ObjectUtils';
+import {getPropsSorted} from './ObjectUtils';
 
 
 
@@ -32,7 +32,7 @@ function ShowMoreButton ({maxrows, setMaxRows, length, jump=10}) {
 	);
 }
 
-export function ObjectTable ({object, props=null}) {
+export function ObjectTable ({object, name, title="All", props=null}) {
 	const [maxrows, setMaxRows] = React.useState(10);
 
 	if (props === null) {
@@ -41,21 +41,27 @@ export function ObjectTable ({object, props=null}) {
 
 	const navigatorItems = props.filter((p, k) => k < maxrows).map((p, k) => {
 		return (
-			<tr key={k} className="odd:bg-slate-100 ch:px-3 ch:py-3 ch:border-t-2 ch:border-slate-200">
-				<td className="text-right">{k+1}</td>
-				<td className="">{p}</td>
+			<tr key={k}>
+				<td>{k+1}</td>
+				<td>{p}</td>
 				<td className="ch:px-2 ch:py-1 ch:rounded">{getValue(object[p])}</td>
 			</tr>
 		);
 	});
 
+	const currentRowCount = maxrows > props.length ? props.length : maxrows;
+
 	return (
-		<div className="DebugInfo">
-			<div className="bg-slate-50 max-w-lg mx-auto my-4 rounded shadow overflow-hidden">
-				<h3 className="px-4 py-4 text-center font-bold text-base bg-blue-600 text-white">Displaying {maxrows > props.length ? props.length : maxrows} / {props.length} props.</h3>
-				<table className="w-full text-sm font-bold">
+		<div className="DebugInfo py-6">
+			<div className="TableContainer">
+				<div className="TableHeader">
+					<div className="grow basis-0">{title}</div>
+					<div className="w-24 bg-blue-700">{currentRowCount} / {props.length}</div>
+					<div className="grow basis-0">{name}</div>
+				</div>
+				<table className="w-full">
 					<thead>
-						<tr className="ch:px-3 ch:py-2">
+						<tr>
 							<td></td>
 							<td>Name</td>
 							<td>Value</td>
@@ -65,9 +71,9 @@ export function ObjectTable ({object, props=null}) {
 				</table>
 			</div>
 
-			<div className="max-w-lg mx-auto px-4 py-4">
-				{(maxrows < props.length) && <ShowMoreButton length={props.length} {...{maxrows, setMaxRows}} />}
-			</div>
+			{(maxrows < props.length) && <div className="max-w-lg mx-auto px-4 py-4">
+				<ShowMoreButton length={props.length} {...{maxrows, setMaxRows}} />
+			</div>}
 		</div>
 	);
 }

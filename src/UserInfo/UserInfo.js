@@ -2,6 +2,8 @@ import Header from './Header';
 import Footer from './Footer';
 import DebugInfo from './DebugInfo';
 
+import './UserInfo.css';
+
 
 
 export default function UserInfo () {

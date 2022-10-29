@@ -1,0 +1,39 @@
+
+div.TableContainer {
+	@apply bg-slate-50 max-w-lg mx-auto my-4 rounded shadow overflow-hidden;
+}
+
+div.TableContainer > div.TableHeader {
+	@apply flex w-full text-center font-bold text-base bg-blue-600 text-white;
+}
+
+div.TableContainer > div.TableHeader > div {
+	@apply px-2 py-4;
+}
+
+table {
+	@apply text-sm font-bold;
+}
+
+table thead > tr {
+	@apply bg-blue-200;
+}
+
+table thead > tr > td {
+	@apply px-3 py-2 border-t-2 border-slate-200 text-blue-700;
+}
+
+table tbody > tr {
+	@apply odd:bg-slate-100;
+	@apply even:bg-slate-200;
+}
+
+table tbody > tr > td {
+	@apply px-3 py-3 border-t-2 border-slate-200;
+}
+
+table tr > td:first-child {
+	@apply text-right;
+}
+
+
