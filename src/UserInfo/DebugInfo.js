@@ -1,4 +1,4 @@
-import {ObjectTable} from './Utils';
+import {ObjectInfo} from './Utils';
 
 
 
@@ -11,15 +11,15 @@ export default function DebugInfo () {
 		{name: 'Window', object: window},
 	];
 
-	const objectTables = objects.map((element, k) => {
+	const objectInfoItems = objects.map((element, k) => {
 		return (
-			<div key={k} className="px-4 py-6"><ObjectTable object={element.object} /></div>
+			<div key={k} className="sm:px-2 py-16"><ObjectInfo {...element} /></div>
 		);
 	});
 
 	return (
 		<div className="DebugInfo">
-			<div>{objectTables}</div>
+			<div className="odd:ch:bg-slate-100 even:ch:bg-slate-200">{objectInfoItems}</div>
 		</div>
 	);
 }
