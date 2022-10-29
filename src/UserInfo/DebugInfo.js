@@ -4,11 +4,11 @@ import {ObjectTable} from './Utils';
 
 export default function DebugInfo () {
 	const objects = [
-		{name: '', object: window},
-		{name: '', object: window.screen},
-		{name: '', object: window.location},
-		{name: '', object: window.history},
-		{name: '', object: navigator}
+		{name: 'Screen', object: window.screen},
+		{name: 'Location', object: window.location},
+		{name: 'History', object: window.history},
+		{name: 'Navigator', object: navigator},
+		{name: 'Window', object: window},
 	];
 
 	const objectTables = objects.map((element, k) => {
