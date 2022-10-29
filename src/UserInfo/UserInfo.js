@@ -9,11 +9,10 @@ export default function UserInfo () {
 		<div className="UserInfo">
 			<Header />
 			<div className="UserInfo min-h-screen bg-slate-200 px-2 py-16">
-				<main className="max-w-xl mx-auto">
+				<main className="max-w-3xl mx-auto">
 					<h1 className="text-3xl text-center font-bold m-auto">userInfo</h1>
-					<DebugInfo object={navigator} />
-					<DebugInfo object={window} />
 				</main>
+				<DebugInfo />
 			</div>
 			<Footer />
 		</div>
